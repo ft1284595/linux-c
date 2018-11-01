@@ -1,0 +1,4 @@
+#ignore execute files
+app
+#ignore vim temp files
+*.swp
