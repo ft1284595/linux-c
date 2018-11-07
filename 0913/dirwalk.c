@@ -14,26 +14,27 @@ void iterateDir(char *path){
 	int i = 0;
 	char cwd[1024];
 	char newPath[1024] = {0}; 
+	//printf("iterateDir path=%s\n", path);
 	dir = opendir(path);
 	if(dir == NULL){
 		perror("open dir");
 		exit(-1);
 	}
-	chdir(path);
-	errno = 0;
 	while((s_dir = readdir(dir)) != NULL ){
 		/*
 		printf("%s\n", getcwd(cwd, sizeof(cwd)));	
 		printf("%s\n",s_dir->d_name);			
 		*/
+		//printf("^^^^^%s\n", s_dir->d_name);
+		//printf("------%s\n", getcwd(cwd, sizeof(cwd)));
 		if((strcmp(s_dir->d_name, ".") == 0) || (strcmp(s_dir->d_name, "..") == 0))
 		{
 			continue;
 		}
-		i = stat(s_dir->d_name, &statbuf);
+		sprintf(newPath, "%s/%s", path,s_dir->d_name);
+		i = stat(newPath, &statbuf);
 		if(i == -1)
 		{
-			printf("^^^^^%s\n", s_dir->d_name);
 			perror("dirwalk");
 			errno = 0;
 			continue;
@@ -42,12 +43,14 @@ void iterateDir(char *path){
 		//printf("i=%d\n", i);
 		//printf("errno=%d\n", errno);
 		if((statbuf.st_mode & S_IFMT) == S_IFDIR){
-			printf("*******************dir %s\n", s_dir->d_name);
-			printf("----st_mode=%x\n", statbuf.st_mode);
-			sprintf(newPath, "%s/%s", path,s_dir->d_name);
+			//printf("*******************dir %s\n", s_dir->d_name);
+			//printf("----st_mode=%x\n", statbuf.st_mode);
+			//sprintf(newPath, "%s/%s", path,s_dir->d_name);
+			//printf("++++++newPath=%s", newPath);
 			iterateDir(newPath);
 		}else{
-			printf("%s\n",s_dir->d_name);			
+			//printf("%s\n",s_dir->d_name);			
+			printf("%s\n", newPath);
 		}
 	}
 	closedir(dir);
