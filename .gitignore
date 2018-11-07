@@ -1,4 +1,5 @@
 #ignore execute files
 app
+a.out
 #ignore vim temp files
 *.swp
