@@ -7,6 +7,7 @@
 #include <fcntl.h>
 
 #define MAPLEN 0x1000
+
 struct STU{
 	int id;
 	char name[20];
@@ -28,10 +29,20 @@ int main(int argc, char *argv[])
 		exit(1);
 	}
 
-	fd = open(argv[1], O_RDWR);
+	fd = open(argv[1], O_RDWR | O_CREAT, 0777);
 	if(fd<0){
 		sys_err("open", 1);
 	}
+	/*
+	if(lseek(fd, MAPLEN-1, SEEK_SET)<0){
+		sys_err("lseek", 3);
+	}
+	
+	if(write(fd, "\0", 1) < 0){
+		sys_err("write", 4);
+	}
+	*/
+	
 
 	mm = mmap(NULL, MAPLEN, PROT_READ|PROT_WRITE, MAP_SHARED, fd, 0);
 	if(mm == MAP_FAILED){
@@ -39,12 +50,16 @@ int main(int argc, char *argv[])
 	}
 
 	close(fd);
-	unlink(argv[1]);
 
 	while(1){
-		printf("%d\n", mm->id);
-		printf("%s\n", mm->name);
-		printf("%c\n", mm->sex);
+		//sprintf(mm, "hello%d", i++);
+		mm->id = i;
+		sprintf(mm->name, "zhang-%d", i); 
+		if(i % 2 == 0)
+			mm->sex = 'm';
+		else
+			mm->sex = 'w';
+		i++;
 		sleep(1);
 	}
 	munmap(mm, MAPLEN);
