@@ -1,0 +1,33 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+FILEITEM	exercise_centOS.c	/^} FILEITEM;$/;"	v	typeref:struct:__anon1
+alreadExist	exercise2.c	/^int alreadExist(char *name)$/;"	f
+arr_index	exercise2.c	/^int arr_index = 0;$/;"	v
+daemonize	daemon.c	/^void daemonize(void)$/;"	f
+daemonize	exercise1.c	/^void daemonize()$/;"	f
+do_sig_child	waitpid.c	/^void do_sig_child(int signo)$/;"	f
+fileArray	exercise2.c	/^} fileArray[8192];$/;"	v	typeref:struct:fileItem
+fileItem	exercise2.c	/^struct fileItem{$/;"	s	file:
+fileItem	exercise_centOS.c	/^typedef struct FILEITEM fileItem;$/;"	t	typeref:struct:FILEITEM	file:
+fileName	exercise2.c	/^	char fileName[512];$/;"	m	struct:fileItem	file:
+fileName	exercise_centOS.c	/^	char fileName[512];$/;"	m	struct:__anon1	file:
+listDir	exercise_centOS.c	/^void listDir(char path[1024])$/;"	f
+mTime	exercise2.c	/^	time_t mTime;$/;"	m	struct:fileItem	file:
+main	ctime.c	/^int main(void)$/;"	f
+main	daemon.c	/^int main(void)$/;"	f
+main	exercise1.c	/^int main(void)$/;"	f
+main	exercise2.c	/^int main(void)$/;"	f
+main	exercise_centOS.c	/^void main(void)$/;"	f
+main	setsid.c	/^int main(void)$/;"	f
+main	ttyname.c	/^int main(void)$/;"	f
+main	waitpid.c	/^int main(void)$/;"	f
+modifyTime	exercise2.c	/^	char modifyTime[256];$/;"	m	struct:fileItem	file:
+modifyTime	exercise_centOS.c	/^	char modifyTime[256];$/;"	m	struct:__anon1	file:
+monitorDir	exercise2.c	/^void monitorDir(char path[1024], struct fileItem fileArray[], int index, int fd)$/;"	f
+printFileItem	exercise2.c	/^void printFileItem()$/;"	f
+sys_err	exercise1.c	/^void sys_err(char *str, int returnNo)$/;"	f
+sys_err	waitpid.c	/^void sys_err(char *str)$/;"	f
