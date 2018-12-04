@@ -33,7 +33,7 @@ void daemonize(void)
 {
 	pid_t pid;
 	pid_t pid_s;
-	if(pid = fork() < 0){
+	if((pid = fork()) < 0){
 		sys_err("fork", 1);
 	}else if(pid > 0){
 		exit(0);
